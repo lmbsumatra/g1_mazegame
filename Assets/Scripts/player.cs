@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public int keys = 0;
-    public float speed = 5.0f;
+    
 
     public Text keyAmount;
     public Text youWin;
     public GameObject door;
-    
+
+    private Animator anim;
+
+    private float x, y;
+    private bool is_walking;
+    public float speed = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,26 +36,53 @@ public class Player : MonoBehaviour
             rb = gameObject.AddComponent<Rigidbody2D>();
         }
         rb.gravityScale = 0; // Adjust gravity scale based on your game's requirements
-        }
+
+        anim = GetComponent<Animator>();
+    }
+
 
     // Update is called once per frame
     void Update()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
-    Vector3 horizontal = new Vector3(Input.GetAxis("Horizontal"), 0.0f, 0.0f);
-    transform.position = transform.position + horizontal * Time.deltaTime;
+        Vector3 horizontal = new Vector3(Input.GetAxis("Horizontal"), 0.0f, 0.0f);
+        transform.position = transform.position + horizontal * Time.deltaTime;
 
-    Vector3 vertical = new Vector3(0.0f, Input.GetAxis("Vertical"), 0.0f);
-    transform.position = transform.position + vertical * Time.deltaTime;
+        Vector3 vertical = new Vector3(0.0f, Input.GetAxis("Vertical"), 0.0f);
+        transform.position = transform.position + vertical * Time.deltaTime;
 
-    Debug.Log("hor: " + horizontal.x + ", " + horizontal.y + ", " + horizontal.z);
-    Debug.Log("ver: " + vertical.x + ", " + vertical.y + ", " + vertical.z);
+        x = Input.GetAxis("Horizontal");
+        y = Input.GetAxis("Vertical");
 
-    
+        if(x !=0 || y !=0)
+        {
+            if(!is_walking)
+            {
+                is_walking = true;
+                anim.SetBool("is_walking", is_walking);
+            }
 
-    // Move the Rigidbody2D using MovePosition for controlled movement
-    // rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+            Move();
+
+        }
+        else
+        {
+            if(is_walking)
+            {
+                is_walking = false;
+                anim.SetBool("is_walking", is_walking);
+            }
+        }
+
+    }
+
+    private void Move()
+    {
+        anim.SetFloat("X", x);
+        anim.SetFloat("Y", y);
+
+        transform.Translate(x * Time.deltaTime * speed, y * Time.deltaTime * speed, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
