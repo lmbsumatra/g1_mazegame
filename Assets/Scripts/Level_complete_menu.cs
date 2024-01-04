@@ -22,8 +22,14 @@ public class Level_complete_menu : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // Assuming build index 1 is your game scene, adjust this according to your actual build settings
+        int gameSceneIndex = 1;
+        SceneManager.LoadScene(gameSceneIndex);
+
+        // Ensure that Time.timeScale is set to 1
+        Time.timeScale = 1f;
     }
+
 
 
 }
