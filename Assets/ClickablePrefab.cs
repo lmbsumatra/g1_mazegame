@@ -12,7 +12,7 @@ public class TorchLight : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!isCoroutineRunning)
+        if (!isCoroutineRunning && !IsGamePaused())
         {
             StartCoroutine(IncreaseLightForDuration());
         }
@@ -58,5 +58,12 @@ public class TorchLight : MonoBehaviour
         Destroy(gameObject);
 
         isCoroutineRunning = false;
+    }
+
+    private bool IsGamePaused()
+    {
+        // Check if the game is paused by accessing the Pause_menu script
+        Pause_menu pauseMenu = FindObjectOfType<Pause_menu>();
+        return pauseMenu != null && pauseMenu.IsPaused();
     }
 }
