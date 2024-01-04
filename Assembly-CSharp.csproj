@@ -60,12 +60,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\chest.cs" />
+    <Compile Include="Assets\ClickablePrefab.cs" />
     <Compile Include="Assets\Scripts\finish_play.cs" />
     <Compile Include="Assets\Scripts\game_over.cs" />
     <Compile Include="Assets\Scripts\player.cs" />
+    <Compile Include="Assets\Scripts\Torch Controller.cs" />
+    <Compile Include="Assets\Scripts\slot.cs" />
     <Compile Include="Assets\Scripts\Pause_menu.cs" />
     <Compile Include="Assets\Scripts\menu_main.cs" />
+    <Compile Include="Assets\Scripts\Torch Effect.cs" />
+    <Compile Include="Assets\Scripts\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Pickup.cs" />
     <Compile Include="Assets\Scripts\Level_complete_menu.cs" />
+    <Compile Include="Assets\ButtonController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
