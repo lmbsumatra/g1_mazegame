@@ -32,6 +32,8 @@ public class Pause_menu : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
+        isPaused = false; // Set the pause state to false when restarting
     }
 
     // New method to check if the game is paused
