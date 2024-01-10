@@ -6,25 +6,66 @@ using UnityEngine.SceneManagement;
 
 public class game_over : MonoBehaviour
 {
-    
-    [SerializeField] GameObject Game_over_window;
+    [SerializeField] private float damage;
+    [SerializeField] private float speed;
+    [SerializeField] private float movementDistance;
+    private bool movingLeft;
+    private float leftEdge;
+    private float rightEdge;
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void Awake()
     {
-        if (collision.gameObject.name == "player") 
+        leftEdge = transform.position.x - movementDistance;
+        rightEdge = transform.position.x + movementDistance;
+    }
+
+    private void Update()
+    {
+        if(movingLeft)
         {
-            GameOver();
+            if(transform.position.x > leftEdge)
+            {
+                transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
+            }
+            else
+                movingLeft = false;
+        }
+        else
+        {
+            if (transform.position.x < rightEdge)
+            {
+                transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);
+            }
+            else
+                movingLeft = true;
         }
     }
 
-    public void GameOver()
-    {
-        Game_over_window.SetActive(true);
-        Time.timeScale = 0;
 
-    }
+    public void OnTriggerEnter2D(Collider2D collision)
+     {
+         if (collision.tag == "Player") 
+         {
+            collision.GetComponent<Health>().TakeDamage(damage);
+         }
+     }
 
 
 }
 
+//[SerializeField] GameObject Game_over_window;
 
+// public void OnTriggerEnter2D(Collider2D collision)
+// {
+//     if (collision.gameObject.name == "player") 
+//     {
+//         GameOver();
+//     }
+// }
+
+// public void GameOver()
+// {
+//     Game_over_window.SetActive(true);
+//     Time.timeScale = 0;
+
+// }
