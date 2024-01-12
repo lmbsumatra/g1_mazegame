@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Health\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Pickup.cs" />
+    <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\Level_complete_menu.cs" />
     <Compile Include="Assets\ButtonController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
