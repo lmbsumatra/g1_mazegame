@@ -61,6 +61,7 @@
     <Compile Include="Assets\Health\HealthCollectible.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyPatrol.cs" />
     <Compile Include="Assets\Scripts\chest.cs" />
+    <Compile Include="Assets\Health\PotionPick.cs" />
     <Compile Include="Assets\ClickablePrefab.cs" />
     <Compile Include="Assets\Scripts\finish_play.cs" />
     <Compile Include="Assets\Scripts\game_over.cs" />
