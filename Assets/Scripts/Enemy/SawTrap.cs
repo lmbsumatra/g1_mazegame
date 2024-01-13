@@ -11,6 +11,8 @@ public class SawTrap : MonoBehaviour
     private float leftEdge;
     private float rightEdge;
 
+    //[SerializeField] private AudioClip sawSound;
+
     private void Awake()
     {
         leftEdge = transform.position.x - movementDistance;
@@ -37,6 +39,7 @@ public class SawTrap : MonoBehaviour
             else
                 movingLeft = true;
         }
+       // SoundManager.instance.PlaySound(sawSound);
     }
 
 

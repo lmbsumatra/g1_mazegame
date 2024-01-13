@@ -6,6 +6,7 @@ public class PotionPick : MonoBehaviour
 {
     [SerializeField] private float healthValue;
     private Transform player;
+    [SerializeField] private AudioClip pickupSound;
 
     // Start is called before the first frame update
     private void Start()
@@ -16,6 +17,7 @@ public class PotionPick : MonoBehaviour
     private void OnMouseDown()
     {
         Use();
+        SoundManager.instance.PlaySound(pickupSound);
     }
 
     private void Use()

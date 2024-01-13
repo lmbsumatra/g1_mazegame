@@ -7,6 +7,7 @@ TagManager:
   - Chest
   - Torch
   - Enemy
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

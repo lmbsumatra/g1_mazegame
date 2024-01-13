@@ -13,6 +13,8 @@ public class Chest : MonoBehaviour
     public GameObject errorPopup;
     public GameObject correctPopup;
 
+    [SerializeField] private AudioClip chestSound;
+
     [SerializeField]
     private string chestPassword; // Unique password for each chest
 
@@ -53,6 +55,7 @@ public class Chest : MonoBehaviour
             // Wait for user input
             StartCoroutine(WaitForInput());
         }
+        SoundManager.instance.PlaySound(chestSound);
     }
 
     private System.Collections.IEnumerator WaitForInput()

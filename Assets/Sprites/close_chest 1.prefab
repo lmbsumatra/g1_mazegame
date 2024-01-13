@@ -362,6 +362,7 @@ MonoBehaviour:
   passwordInputField: {fileID: 0}
   errorPopup: {fileID: 0}
   correctPopup: {fileID: 0}
+  chestSound: {fileID: 8300000, guid: 8b4226149112415458c09dc44d52c497, type: 3}
   chestPassword: 
   okButton: {fileID: 0}
   backButton: {fileID: 0}

@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     private bool is_walking;
     public float speed = 5.0f;
 
+    [SerializeField] private AudioClip walkSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,9 +63,11 @@ public class Player : MonoBehaviour
             {
                 is_walking = true;
                 anim.SetBool("is_walking", is_walking);
+                SoundManager.instance.PlaySound(walkSound);
             }
 
             Move();
+            
 
         }
         else
@@ -74,7 +78,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("is_walking", is_walking);
             }
         }
-
+        
     }
 
     private void Move()
