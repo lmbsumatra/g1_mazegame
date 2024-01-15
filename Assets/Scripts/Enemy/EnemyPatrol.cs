@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    [Header ("Patrol Points")]
+    [Header("Patrol Points")]
     [SerializeField] private Transform leftEdge;
     [SerializeField] private Transform rightEdge;
 
@@ -12,7 +12,7 @@ public class EnemyPatrol : MonoBehaviour
     [Header("Movement parameters")]
     [SerializeField] private float speed;
     private Vector3 initScale;
-    private bool movingLeft; //patrol in a specific range
+    private bool movingLeft; // patrol in a specific range
 
     [Header("Idle behaviour")]
     [SerializeField] private float idleDuration;
@@ -21,6 +21,7 @@ public class EnemyPatrol : MonoBehaviour
     [Header("Enemy Animator")]
     [SerializeField] private Animator anim;
 
+    private bool isDead = false; // flag to check if the monster is dead
 
     private void Awake()
     {
@@ -32,26 +33,37 @@ public class EnemyPatrol : MonoBehaviour
         anim.SetBool("moving", false);
     }
 
+    public void OnMonsterDeath()
+    {
+        isDead = true;
+        anim.SetBool("moving", false);
+    }
 
     private void Update()
     {
-        if(movingLeft)
+        if (isDead)
         {
-            if(enemy.position.x >= leftEdge.position.x)
-                 MoveInDirection(-1);
+            // Optionally handle the disappearance or cleanup when the monster is dead
+            return;
+        }
+
+        if (movingLeft)
+        {
+            if (enemy.position.x >= leftEdge.position.x)
+                MoveInDirection(-1);
             else
             {
-                //Change Direction
+                // Change Direction
                 DirectionChange();
             }
         }
         else
         {
-            if(enemy.position.x <= rightEdge.position.x)
+            if (enemy.position.x <= rightEdge.position.x)
                 MoveInDirection(1);
             else
             {
-                //Change Direction
+                // Change Direction
                 DirectionChange();
             }
         }
@@ -62,7 +74,7 @@ public class EnemyPatrol : MonoBehaviour
         anim.SetBool("moving", false);
         idleTimer += Time.deltaTime;
 
-        if(idleTimer > idleDuration)
+        if (idleTimer > idleDuration)
             movingLeft = !movingLeft;
     }
 
@@ -71,13 +83,12 @@ public class EnemyPatrol : MonoBehaviour
         idleTimer = 0;
         anim.SetBool("moving", true);
 
-        //Make enemy face direction
-        enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * _direction, 
+        // Make enemy face direction
+        enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * _direction,
             initScale.y, initScale.z);
 
-        //Move in that direction
+        // Move in that direction
         enemy.position = new Vector3(enemy.position.x + Time.deltaTime * _direction * speed,
             enemy.position.y, enemy.position.z);
     }
-
 }
