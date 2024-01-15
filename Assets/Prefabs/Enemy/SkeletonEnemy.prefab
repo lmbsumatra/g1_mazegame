@@ -170,6 +170,7 @@ MonoBehaviour:
   iFramesDuration: 0
   numberOfFlashes: 0
   deathSound: {fileID: 0}
+  hurtSound: {fileID: 0}
 --- !u!114 &5926686964827071457
 MonoBehaviour:
   m_ObjectHideFlags: 0
