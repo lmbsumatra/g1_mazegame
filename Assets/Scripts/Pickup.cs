@@ -6,6 +6,7 @@ public class Pickup : MonoBehaviour
 {
     private Inventory inventory;
     public GameObject itemButton;
+    [SerializeField] private AudioClip pickSound;
     // Start is called before the first frame update
     private void Start()
     {
@@ -16,6 +17,7 @@ public class Pickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            SoundManager.instance.PlaySound(pickSound);
             for (int i=0; i < inventory.slots.Length; i++)
             {
                 if (inventory.isFull[i] == false)

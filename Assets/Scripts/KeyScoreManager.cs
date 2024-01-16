@@ -12,4 +12,9 @@ public class KeyScoreManager : MonoBehaviour
         keyAmount++;
     }
 
+    //Reset key Count to zero
+    public static void ResetKeyCount()
+    {
+        keyAmount = 0;
+    }
 }

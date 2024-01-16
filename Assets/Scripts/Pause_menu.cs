@@ -32,6 +32,10 @@ public class Pause_menu : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        KeyScoreManager.ResetKeyCount();
+
+        // Ensure that Time.timeScale is set to 1
+        Time.timeScale = 1f;
     }
 
     // New method to check if the game is paused

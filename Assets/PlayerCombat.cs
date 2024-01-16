@@ -10,6 +10,7 @@ public class PlayerCombat : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public int attackDamage = 20;
+    [SerializeField] private AudioClip attackSound;
 
     private Health playerHealth;  // Reference to the PlayerHealthScript
 
@@ -52,6 +53,7 @@ public class PlayerCombat : MonoBehaviour
             enemy.GetComponent<Monster>().TakeDamage(attackDamage);
             // Apply damage to the enemy or perform other actions
         }
+        SoundManager.instance.PlaySound(attackSound);
     }
 
     private void OnDrawGizmosSelected()
