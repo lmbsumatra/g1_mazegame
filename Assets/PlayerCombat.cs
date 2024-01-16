@@ -11,13 +11,21 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask enemyLayers;
     public int attackDamage = 20;
 
+    private Health playerHealth;  // Reference to the PlayerHealthScript
+
+    void Start()
+    {
+        playerHealth = GetComponent<Health>();
+    }
+
     // Update is called once per frame
     void Update()
     {
         // Get the horizontal input value
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        // Check if the player is alive before allowing the attack
+        if (playerHealth.IsAlive() && Input.GetKeyUp(KeyCode.Space))
         {
             Attack();
         }
@@ -39,13 +47,13 @@ public class PlayerCombat : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
         // Damage enemies
-
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Monster>().TakeDamage(attackDamage);
             // Apply damage to the enemy or perform other actions
         }
     }
+
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)

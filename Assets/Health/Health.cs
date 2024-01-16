@@ -14,11 +14,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float numberOfFlashes;
     private SpriteRenderer spriteRend;
 
-    //[Header("Components")]
-    //[SerializeField] private Behaviour[] components;
-    //private bool invulnerable;
-
-    [Header ("Death Sound")]
+    [Header("Death Sound")]
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private AudioClip hurtSound;
 
@@ -57,19 +53,10 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
     }
 
-    /* public void Respawn()  //RESPAWN OF CHARACTER
+    public bool IsAlive()
     {
-        dead = false;
-        AddHealth(startingHealth);
-        anim.ResetTrigger("die");
-        anim.Play("Idle_left");
-       // StartCoroutine(Invunerability());
-
-        //Activate all attach component classes
-       // foreach (Behaviour component in components)
-      //      component.enabled = true;
+        return !dead;
     }
-   */
 
     private IEnumerator Invulnerability()
     {
@@ -83,8 +70,6 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
         }
 
-        Physics2D.IgnoreLayerCollision(10, 11, false);  // invulnerability duration
+        Physics2D.IgnoreLayerCollision(10, 11, false);
     }
-
-    
 }
