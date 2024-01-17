@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Health : MonoBehaviour
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private AudioClip hurtSound;
 
+    [Header("Game Over")]
+    [SerializeField] private GameObject gameOverWindow;
 
     private void Awake()
     {
@@ -28,22 +31,19 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float _damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+        if (!dead) // Check if the character is alive
+        {
+            currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
-        if (currentHealth > 0)
-        {
-            anim.SetTrigger("hurt");
-            StartCoroutine(Invulnerability());
-            SoundManager.instance.PlaySound(hurtSound);
-        }
-        else
-        {
-            if (!dead)
+            if (currentHealth > 0)
             {
-                anim.SetTrigger("die");
-                GetComponent<Player>().enabled = false;
-                dead = true;
-                SoundManager.instance.PlaySound(deathSound);
+                anim.SetTrigger("hurt");
+                StartCoroutine(Invulnerability());
+                SoundManager.instance.PlaySound(hurtSound);
+            }
+            else
+            {
+                Die();
             }
         }
     }
@@ -56,6 +56,32 @@ public class Health : MonoBehaviour
     public bool IsAlive()
     {
         return !dead;
+    }
+
+    private void Die()
+    {
+        if (!dead)
+        {
+            anim.SetTrigger("die");
+            GetComponent<Player>().enabled = false;
+            dead = true;
+            SoundManager.instance.PlaySound(deathSound);
+
+            // Add a delay before displaying game over window
+            StartCoroutine(DelayedGameOver());
+        }
+    }
+
+    private IEnumerator DelayedGameOver()
+    {
+        yield return new WaitForSeconds(3f); // Adjust the delay duration as needed
+
+        // Display game over window
+        if (gameOverWindow != null)
+        {
+            gameOverWindow.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     private IEnumerator Invulnerability()
