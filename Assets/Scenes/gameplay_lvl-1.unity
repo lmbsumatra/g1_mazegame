@@ -668,6 +668,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5299243295669448426, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5450756741518851141, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -764,6 +768,22 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5769394546093717397, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769394546093717397, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 43.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769394546093717397, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769394546093717397, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5985748464111219751, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -774,9 +794,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9221716461062197110, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
       propertyPath: m_text
-      value: 'THIRD
-
-        RIDDLE'
+      value: I fly without wings. I cry without eyes. Wherever I go, darkness follows
+        me. What am I?
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221716461062197110, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221716461062197110, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2238,6 +2265,22 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5769394546093717397, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 429.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769394546093717397, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 31.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769394546093717397, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.70001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769394546093717397, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5985748464111219751, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2248,9 +2291,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9221716461062197110, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
       propertyPath: m_text
-      value: 'SECOND
-
-        RIDLLE'
+      value: The more you take, the more you leave behind. What am I?
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221716461062197110, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221716461062197110, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3817,7 +3866,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4013,7 +4062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3724143902779408630, guid: faec209cf11a4ba4586c43a2809059ed, type: 3}
       propertyPath: chestPassword
-      value: Dragon
+      value: age
       objectReference: {fileID: 0}
     - target: {fileID: 3724143902779408630, guid: faec209cf11a4ba4586c43a2809059ed, type: 3}
       propertyPath: correctAudioSource
@@ -4732,7 +4781,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 4
@@ -5873,8 +5922,8 @@ Camera:
   m_GameObject: {fileID: 1029083325}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.45806816, g: 0.5754717, b: 0.31759524, a: 0}
+  m_ClearFlags: 4
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -6418,6 +6467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level_complete_window: {fileID: 1057276844}
+  completerSound: {fileID: 8300000, guid: 2b150f57b6753f847aee31917cab9089, type: 3}
 --- !u!1 &1164266882
 GameObject:
   m_ObjectHideFlags: 0
@@ -9117,7 +9167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3724143902779408630, guid: faec209cf11a4ba4586c43a2809059ed, type: 3}
       propertyPath: chestPassword
-      value: Mahal Kita
+      value: cloud
       objectReference: {fileID: 0}
     - target: {fileID: 3724143902779408630, guid: faec209cf11a4ba4586c43a2809059ed, type: 3}
       propertyPath: correctAudioSource
@@ -10877,6 +10927,26 @@ PrefabInstance:
     - target: {fileID: 5450756741518851141, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769394546093717397, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 450.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769394546093717397, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 39.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769394546093717397, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.70001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769394546093717397, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 19.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221716461062197110, guid: 28ab5f92b727fd64ca7f68f3bc957be2, type: 3}
+      propertyPath: m_text
+      value: What has to be broken before you can use it?
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

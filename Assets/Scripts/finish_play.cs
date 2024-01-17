@@ -7,12 +7,14 @@ using UnityEngine.SceneManagement;
 public class finish_play : MonoBehaviour
 {
     [SerializeField] GameObject Level_complete_window;
+    [SerializeField] private AudioClip completerSound;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "player") 
         {
             CompleteLevel();
+            SoundManager.instance.PlaySound(completerSound);
         }
     }
 
