@@ -58,36 +58,41 @@ public class Chest : MonoBehaviour
         SoundManager.instance.PlaySound(chestSound);
     }
 
-    private System.Collections.IEnumerator WaitForInput()
+    private IEnumerator WaitForInput()
     {
         while (true)
         {
-            // Check if the user has provided input
-            if (Input.GetKeyDown(KeyCode.Return))
+            // Check if the chest is still closed
+            if (!isChestOpened)
             {
-                // Hide the hint pop-up
-                hintPopup.SetActive(false);
-
-                // Process the password
-                if (CheckPassword())
+                // Check if the user has provided input
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    OpenChest();
-                }
-                else
-                {
-                    errorPopup.SetActive(true);
-                    yield return new WaitForSeconds(2f); // Adjust the duration as needed
-                    errorPopup.SetActive(false);
-                    CloseChest();
-                }
+                    // Hide the hint pop-up
+                    hintPopup.SetActive(false);
 
-                // Exit the loop
-                break;
+                    // Process the password
+                    if (CheckPassword())
+                    {
+                        OpenChest();
+                    }
+                    else
+                    {
+                        errorPopup.SetActive(true);
+                        yield return new WaitForSeconds(2f); // Adjust the duration as needed
+                        errorPopup.SetActive(false);
+                        CloseChest();
+                    }
+
+                    // Exit the loop
+                    break;
+                }
             }
 
             yield return null;
         }
     }
+
     private void SubmitPassword()
     {
         // Hide the hint pop-up
