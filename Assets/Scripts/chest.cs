@@ -46,14 +46,12 @@ public class Chest : MonoBehaviour
             // Change the sprite of the object to the new sprite
             GetComponent<SpriteRenderer>().sprite = openChestSprite;
 
-            // Show the hint pop-up
-            hintPopup.SetActive(true);
-
-            // Mark the chest as opened
-            isChestOpened = true;
-
-            // Wait for user input
-            StartCoroutine(WaitForInput());
+            if (!isChestOpened)
+            {
+                hintPopup.SetActive(true);// Show the hint pop-up
+                isChestOpened = true; // Mark the chest as opened
+                StartCoroutine(WaitForInput()); // Wait for user input
+            }
         }
         SoundManager.instance.PlaySound(chestSound);
     }
@@ -174,30 +172,23 @@ public class Chest : MonoBehaviour
 
     private void OpenChest()
     {
-        /// Increment key amount
         KeyScoreManager keyScoreManager = FindObjectOfType<KeyScoreManager>();
         if (keyScoreManager != null)
         {
-            keyScoreManager.IncrementKeyCount();
+            keyScoreManager.IncrementKeyCount(); // add key 
         }
-        // Perform actions for opening the chest, e.g., show inventory
-        // ...
 
         passwordInputField.text = "";
-
         GetComponent<SpriteRenderer>().sprite = openChestSprite;
-
-        // Show the correct popup
         correctPopup.SetActive(true);
 
-        // Play the audio clip for correct password
-        if (correctAudioSource != null && correctAudioSource.clip != null)
+        if (correctAudioSource != null && correctAudioSource.clip != null) //audio for correct guess
         {
             correctAudioSource.Play();
         }
 
-        // Hide the correct popup after a delay (adjust the duration as needed)
         StartCoroutine(HideCorrectPopup());
+        isChestOpened = true; // Mark the chest as opened
     }
 
     private void CloseChest()

@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\chest.cs" />
     <Compile Include="Assets\Health\PotionPick.cs" />
     <Compile Include="Assets\ClickablePrefab.cs" />
+    <Compile Include="Assets\Scripts\Dialog\DialogUI.cs" />
     <Compile Include="Assets\Scripts\finish_play.cs" />
     <Compile Include="Assets\Audio\SoundManager.cs" />
     <Compile Include="Assets\Scripts\game_over.cs" />
@@ -88,7 +89,9 @@
     <Compile Include="Assets\Monster.cs" />
     <Compile Include="Assets\Health\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Pickup.cs" />
+    <Compile Include="Assets\Scripts\Dialog\DialogObject.cs" />
     <Compile Include="Assets\Scripts\Door\Door.cs" />
+    <Compile Include="Assets\Scripts\Dialog\TypewriterEffect.cs" />
     <Compile Include="Assets\Scripts\Optioin\SettingMenu.cs" />
     <Compile Include="Assets\Scripts\Level_complete_menu.cs" />
     <Compile Include="Assets\ButtonController.cs" />
