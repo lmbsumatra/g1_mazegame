@@ -18,6 +18,7 @@ public class PotionPick : MonoBehaviour
     {
         Use();
         SoundManager.instance.PlaySound(pickupSound);
+        Destroy(gameObject);
     }
 
     private void Use()

@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemButton: {fileID: 2376469430275174018}
+  pickSound: {fileID: 0}
 --- !u!58 &2578559469152365399
 CircleCollider2D:
   m_ObjectHideFlags: 0
