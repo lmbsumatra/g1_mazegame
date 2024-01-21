@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa84f6a933199247a861c9e98c99636, type: 3}
+  m_Name: No
+  m_EditorClassIdentifier: 
+  dialogue:
+  - I see. I'm afraid to inform you that you are trapped here, human. To escape this
+    place, you must search for the keys and find the door to unlock it.
+  - However, I must warn you that escaping won't be easy, as there are creatures
+    lurking in this place.
+  - Good luck, Human! May your quest be filled with success as you seek out the hidden
+    treasure.
+  responses: []

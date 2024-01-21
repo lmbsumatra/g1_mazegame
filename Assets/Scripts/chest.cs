@@ -26,6 +26,8 @@ public class Chest : MonoBehaviour
 
     private bool isChestOpened = false;
 
+    private Player player; // Reference to the Player script
+
     private void Start()
     {
         // Disable the hint pop-up initially
@@ -36,6 +38,8 @@ public class Chest : MonoBehaviour
 
         okButton.onClick.AddListener(SubmitPassword);
         backButton.onClick.AddListener(CloseChestWithoutOpening);
+
+        player = FindObjectOfType<Player>(); // Find the Player script in the scene
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -48,6 +52,7 @@ public class Chest : MonoBehaviour
 
             if (!isChestOpened)
             {
+                player.SetCanMove(false); // Stop player movement
                 hintPopup.SetActive(true);// Show the hint pop-up
                 isChestOpened = true; // Mark the chest as opened
                 StartCoroutine(WaitForInput()); // Wait for user input
@@ -128,6 +133,8 @@ public class Chest : MonoBehaviour
 
         // Mark the chest as closed
         isChestOpened = false;
+
+        player.SetCanMove(true);
     }
 
     private void RetryAfterIncorrect()
@@ -189,6 +196,7 @@ public class Chest : MonoBehaviour
 
         StartCoroutine(HideCorrectPopup());
         isChestOpened = true; // Mark the chest as opened
+        player.SetCanMove(true);
     }
 
     private void CloseChest()
@@ -198,6 +206,7 @@ public class Chest : MonoBehaviour
 
         // Mark the chest as closed
         isChestOpened = false;
+        player.SetCanMove(true);
     }
 
 }

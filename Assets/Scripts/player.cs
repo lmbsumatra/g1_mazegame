@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public int keys = 0;
-    
+
 
     public Text keyAmount;
     public Text youWin;
@@ -22,14 +22,16 @@ public class Player : MonoBehaviour
 
     [SerializeField] private AudioClip walkSound;
 
+    private bool canMove = true; // Add a flag to control player movement
+
     // Start is called before the first frame update
     void Start()
     {
         // Add the Polygon Collider 2D component to the Player if not added already
         if (GetComponent<PolygonCollider2D>() == null)
         {
-            gameObject.AddComponent<PolygonCollider2D>();GetComponent<Rigidbody2D>().collisionDetectionMode = CollisionDetectionMode2D.Continuous; 
-    GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.Extrapolate;
+            gameObject.AddComponent<PolygonCollider2D>(); GetComponent<Rigidbody2D>().collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.Extrapolate;
         }
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -46,39 +48,48 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-
-        Vector3 horizontal = new Vector3(Input.GetAxis("Horizontal"), 0.0f, 0.0f);
-        transform.position = transform.position + horizontal * Time.deltaTime;
-
-        Vector3 vertical = new Vector3(0.0f, Input.GetAxis("Vertical"), 0.0f);
-        transform.position = transform.position + vertical * Time.deltaTime;
-
-        x = Input.GetAxis("Horizontal");
-        y = Input.GetAxis("Vertical");
-
-        if(x !=0 || y !=0)
+        if (canMove)
         {
-            if(!is_walking)
-            {
-                is_walking = true;
-                anim.SetBool("is_walking", is_walking);
-                SoundManager.instance.PlaySound(walkSound);
-            }
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
-            Move();
-            
+            Vector3 horizontal = new Vector3(Input.GetAxis("Horizontal"), 0.0f, 0.0f);
+            transform.position = transform.position + horizontal * Time.deltaTime;
 
-        }
-        else
-        {
-            if(is_walking)
+            Vector3 vertical = new Vector3(0.0f, Input.GetAxis("Vertical"), 0.0f);
+            transform.position = transform.position + vertical * Time.deltaTime;
+
+            x = Input.GetAxis("Horizontal");
+            y = Input.GetAxis("Vertical");
+
+            if (x != 0 || y != 0)
             {
-                is_walking = false;
-                anim.SetBool("is_walking", is_walking);
+                if (!is_walking)
+                {
+                    is_walking = true;
+                    anim.SetBool("is_walking", is_walking);
+                    SoundManager.instance.PlaySound(walkSound);
+                }
+
+                Move();
+
+
+            }
+            else
+            {
+                if (is_walking)
+                {
+                    is_walking = false;
+                    anim.SetBool("is_walking", is_walking);
+                }
             }
         }
-        
+
+
+    }
+
+    public void SetCanMove(bool move)
+    {
+        canMove = move;
     }
 
     private void Move()

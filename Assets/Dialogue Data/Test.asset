@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   dialogue:
-  - This is first dialogue
-  - this is second dialogue
+  - 'Ah, a visitor! It''s been ages since I last saw one. Fear not, my friend, for
+    I am a person you can trust. '
+  - But what brings you here, human? Perhaps you're on a quest for hidden treasures?
+  responses:
+  - responseText: Yes
+    dialogueObject: {fileID: 11400000, guid: 8f6887c8bee18794ea375f2acd394bd5, type: 2}
+  - responseText: No
+    dialogueObject: {fileID: 11400000, guid: e9d1a75e075cd4041b5ebd3dee59f9f6, type: 2}
