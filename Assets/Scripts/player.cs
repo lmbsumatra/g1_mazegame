@@ -21,6 +21,12 @@ public class Player : MonoBehaviour
     public float speed = 5.0f;
 
     [SerializeField] private AudioClip walkSound;
+    
+    [SerializeField] private DialogUI dialogueUI;
+
+    public DialogUI DialogUI => dialogueUI;
+    public IInteractable Interactable { get; set; }
+
 
     private bool canMove = true; // Add a flag to control player movement
 
@@ -48,6 +54,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (dialogueUI.IsOpen) return; //optional
+        if (Input.GetKeyDown(KeyCode.E))  //Interact
+        {
+
+            Interactable?.Interact(this);
+
+        }
+
         if (canMove)
         {
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -83,7 +97,6 @@ public class Player : MonoBehaviour
                 }
             }
         }
-
 
     }
 

@@ -6,17 +6,27 @@ using TMPro;
 public class TypewriterEffect : MonoBehaviour
 {
     [SerializeField] private float typewriteSpeed = 30f;
+    public bool IsRunning {  get; private set; }
+
+    private Coroutine typingCoroutine;
 
     // Changed the Run method to take two parameters: textToType and textLabel
-    public Coroutine Run(string textToType, TMP_Text textLabel)
+    public void Run(string textToType, TMP_Text textLabel)
     {
         // Call StartCoroutine with the correct parameters
-       return StartCoroutine(TypeText(textToType, textLabel));
+       typingCoroutine = StartCoroutine(TypeText(textToType, textLabel));
+    }
+
+    public void Stop()
+    {
+        StopCoroutine(typingCoroutine);
+        IsRunning = false;
     }
 
     // Modified the TypeText method signature to match the Run method
     private IEnumerator TypeText(string textToType, TMP_Text textLabel)
     {
+        IsRunning = true;
         textLabel.text = string.Empty;
 
         float t = 0;
@@ -32,6 +42,7 @@ public class TypewriterEffect : MonoBehaviour
 
             yield return null;
         }
-        textLabel.text = textToType;
+
+        IsRunning = false;
     }
 }
