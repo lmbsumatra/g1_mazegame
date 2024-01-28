@@ -7,13 +7,14 @@ The game
 
 ## Table of Contents
 - [Objectives](#ojectives)
+- [Gameplay](#gameplay)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Visit](#visit)
 
 ## Obecjtives
 Objectives:
-1.Retrieve Keys:
+1. Retrieve Keys:
 - The primary objective is to collect three keys scattered within the maze.
 - These keys are necessary to unlock the exit and progress to the next level.
 
